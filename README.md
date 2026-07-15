@@ -61,6 +61,20 @@ So the skill's core is three iron rules the catalog hangs off:
 
 Plus a **false-positive guard**: severity 1 = "present but justified" (fallbacks with documented reasons, defensive code at trust boundaries, plugin registries, migration-period `_v2`s) — those are exempt. The goal is a healthier repo, not a body count.
 
+## Real-world run
+
+First field test: a private ML research repo, 13.4k LOC of Python (21-module package + 36 experiment scripts + 20 test files), written largely by coding agents under human review. Scan mode, zero edits, `git status` clean before and after.
+
+**24 findings — and a sharp profile.** Defensive slop (broad excepts, try-import fallbacks, probing chains, narrating comments): **zero**. Test slop: **zero across all 20 test files**. The debt was almost entirely **Tier-1 duplication** (11 findings, 40+ pasted instances), and the copies were already biting:
+
+- a provenance helper pasted into **20 of 22 run scripts had already drifted** — 3 copies gained an env-var fallback the other 17 lack;
+- an experiment class copy-pasted into a "learned" variant whose metric method **silently diverged** — one copy checks 3 intervention pairs, the other 1;
+- the same orthogonal-matrix sampler pasted 4×, the same query dataclass pasted verbatim across modules.
+
+4 findings were exempted as justified (severity 1): a preregistration guard, a deliberate sampling-strategy comparison, bounded retries with a final `raise`. 8 of 36 scripts and 6 of 21 modules came back fully clean — and were reported as clean.
+
+The take-away matched the skill's premise: agents working under review don't swallow errors — they **rewrite what already exists**. Repo-context duplication detection is the tier that matters.
+
 ## Install
 
 Copy (or clone) this directory into your agent's skills folder:
