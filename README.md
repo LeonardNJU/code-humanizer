@@ -110,4 +110,4 @@ MIT.
 
 ## Community
 
-Discussion & feedback: [linux.do](https://linux.do) — 中文开源社区,本项目在此发布与交流。
+Discussion & feedback: [linux.do](https://linux.do) — 宣传友链！
