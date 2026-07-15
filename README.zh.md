@@ -104,10 +104,28 @@ git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-hum
 - 这个 skill 清的是*结构性*债,不管格式偏好——那是 linter 的活。
 - 需要深度判断的债(治标还是治本)只报告,不自动修。
 
+## 贡献新 pattern
+
+目录今天是 16 条,但永远不会"完工"——agent 总在发明新的屎感。如果你在 vibe-coding 里撞见了没被覆盖的模式,[提个 issue](https://github.com/LeonardNJU/code-humanizer/issues) 附上一段最小 before/after 例子(直接 PR 更好)。新 pattern 进目录的方式和最初 16 条一样:先有真实的失败例子,再立规则。
+
+## Star History
+
+<a href="https://star-history.com/#LeonardNJU/code-humanizer&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
+ </picture>
+</a>
+
 ## 致谢
 
 Pattern 目录的形式受 [blader/humanizer](https://github.com/blader/humanizer) 启发。债务分类学来自一个关于 agent-induced technical debt 的研究项目(correctness-equivalent patch 分析);三条铁律来自看着能干的 agent 在没有它们时翻车的实录。
 
-MIT license
+## 许可证
 
-[linux.do](https://linux.do) — 宣传友链！
+[MIT](LICENSE) —— 随便用:fork、改写、把目录搬进你团队的 skills 目录、塞进商业产品里发布,都可以;唯一的义务是保留许可证声明。如果它帮你的仓库躲掉了一个 `_v2`,欢迎点个 star——但从来不是必须的。
+
+## 社区
+
+本项目在 [linux.do](https://linux.do) 发布与交流,新 pattern 反馈优先在那里汇集;英文侧讨论走 [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues)。

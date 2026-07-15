@@ -104,10 +104,28 @@ Default mode is **scan → report** (findings table with pattern #, severity 0�
 - This removes *structural* debt, not formatting opinions — that's your linter's job.
 - Judgment-heavy debt (root-cause-vs-workaround fixes) is reported, not auto-fixed.
 
+## Contributing patterns
+
+The catalog is 16 patterns today and will never be finished — agents keep inventing new kinds of slop. If you've hit one that isn't covered, [open an issue](https://github.com/LeonardNJU/code-humanizer/issues) with a minimal before/after example (or a PR — even better). New patterns enter the catalog the same way the original 16 did: a real failing example first, then the rule.
+
+## Star History
+
+<a href="https://star-history.com/#LeonardNJU/code-humanizer&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
+ </picture>
+</a>
+
 ## Credits
 
 Pattern-catalog format inspired by [blader/humanizer](https://github.com/blader/humanizer). The debt taxonomy distills a research project on agent-induced technical debt (correctness-equivalent patch analysis); the iron rules come from watching capable agents fail without them.
 
-MIT License.
+## License
 
-Discussion & feedback: [linux.do](https://linux.do) — 宣传友链！
+[MIT](LICENSE) — use it, fork it, vendor it into your team's skills directory, rewrite the catalog for your stack, ship it inside something commercial. The only obligation is keeping the license notice. If it saved your repo from a `_v2`, a star is appreciated — never required.
+
+## Community
+
+Released and discussed on [linux.do](https://linux.do), where feedback and new-pattern reports from the Chinese open-source community land first. English-side discussion lives in [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues).
