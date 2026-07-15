@@ -33,7 +33,7 @@ Copy (or clone) this directory into your agent's skills folder:
 
 ```bash
 # Claude Code
-git clone https://github.com/<you>/code-humanizer ~/.claude/skills/code-humanizer
+git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-humanizer
 ```
 
 Any harness that reads `SKILL.md` agent skills works the same way — the skill is a single Markdown file, no build step, no dependencies.
