@@ -1,5 +1,7 @@
 # code-humanizer
 
+English | [中文](README.zh.md)
+
 **[humanizer](https://github.com/blader/humanizer), but for code.** An agent skill that removes signs of AI-generated code from a repository — the structural slop coding agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
 
 The prose humanizer catalogs AI *writing* tells (em-dashes, "it's not just X, it's Y", rule-of-three). This catalogs AI *coding* tells — 16 numbered patterns in 5 tiers, each with detection signals and before/after examples in [SKILL.md](SKILL.md):
