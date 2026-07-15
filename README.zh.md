@@ -108,8 +108,6 @@ git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-hum
 
 Pattern 目录的形式受 [blader/humanizer](https://github.com/blader/humanizer) 启发。债务分类学来自一个关于 agent-induced technical debt 的研究项目(correctness-equivalent patch 分析);三条铁律来自看着能干的 agent 在没有它们时翻车的实录。
 
-MIT。
+MIT license
 
-## 社区
-
-讨论与反馈:[linux.do](https://linux.do) —— 本项目在此发布与交流。
+[linux.do](https://linux.do) — 宣传友链！

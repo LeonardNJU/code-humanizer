@@ -108,8 +108,6 @@ Default mode is **scan → report** (findings table with pattern #, severity 0�
 
 Pattern-catalog format inspired by [blader/humanizer](https://github.com/blader/humanizer). The debt taxonomy distills a research project on agent-induced technical debt (correctness-equivalent patch analysis); the iron rules come from watching capable agents fail without them.
 
-MIT.
-
-## Community
+MIT License.
 
 Discussion & feedback: [linux.do](https://linux.do) — 宣传友链！
