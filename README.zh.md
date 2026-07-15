@@ -110,6 +110,16 @@ git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-hum
 
 目录今天是 16 条,但永远不会"完工"——agent 总在发明新的屎感。如果你在 vibe-coding 里撞见了没被覆盖的模式,[提个 issue](https://github.com/LeonardNJU/code-humanizer/issues) 附上一段最小 before/after 例子(直接 PR 更好)。新 pattern 进目录的方式和最初 16 条一样:先有真实的失败例子,再立规则。
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=LeonardNJU%2Fcode-humanizer&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=LeonardNJU/code-humanizer&type=date&theme=dark&legend=top-left&sealed_token=PxMzEEMfOA3R97IHVMG0zQqC1xVjuoA3cMbkfPzjtmhwAbL9n3oQVqHhhzNgKOwqwD0CShQpk_ostzzb2_m-8qA_U5IFphEK5su_nHoI1HKzcVq3-8oq8HZGL79TUmv5WtGBpBCqOtdrgrF8_KKxta_MCbS9IscnCEtMju92w8_qG8TtIZw_zZ68xYli" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=LeonardNJU/code-humanizer&type=date&legend=top-left&sealed_token=PxMzEEMfOA3R97IHVMG0zQqC1xVjuoA3cMbkfPzjtmhwAbL9n3oQVqHhhzNgKOwqwD0CShQpk_ostzzb2_m-8qA_U5IFphEK5su_nHoI1HKzcVq3-8oq8HZGL79TUmv5WtGBpBCqOtdrgrF8_KKxta_MCbS9IscnCEtMju92w8_qG8TtIZw_zZ68xYli" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=LeonardNJU/code-humanizer&type=date&legend=top-left&sealed_token=PxMzEEMfOA3R97IHVMG0zQqC1xVjuoA3cMbkfPzjtmhwAbL9n3oQVqHhhzNgKOwqwD0CShQpk_ostzzb2_m-8qA_U5IFphEK5su_nHoI1HKzcVq3-8oq8HZGL79TUmv5WtGBpBCqOtdrgrF8_KKxta_MCbS9IscnCEtMju92w8_qG8TtIZw_zZ68xYli" />
+ </picture>
+</a>
+
 ## 致谢
 
 Pattern 目录的形式受 [blader/humanizer](https://github.com/blader/humanizer) 启发。债务分类学来自一个关于 agent-induced technical debt 的研究项目(correctness-equivalent patch 分析);三条铁律来自看着能干的 agent 在没有它们时翻车的实录。
