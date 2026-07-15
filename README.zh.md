@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-[![GitHub stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=social)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License](https://img.shields.io/github/license/LeonardNJU/code-humanizer?style=flat-square)](LICENSE) [![Last commit](https://img.shields.io/github/last-commit/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/commits) [![Issues](https://img.shields.io/github/issues/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/issues)
 
 **[humanizer](https://github.com/blader/humanizer) 管文字,这个管代码。** 一个 agent skill,用来清除仓库里 AI 生成代码的痕迹——coding agent 为了"测试通过"而牺牲"代码库健康"时留下的结构性屎山。
 

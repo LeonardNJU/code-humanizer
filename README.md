@@ -2,7 +2,7 @@
 
 English | [中文](README.zh.md)
 
-[![GitHub stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=social)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License](https://img.shields.io/github/license/LeonardNJU/code-humanizer?style=flat-square)](LICENSE) [![Last commit](https://img.shields.io/github/last-commit/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/commits) [![Issues](https://img.shields.io/github/issues/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/issues)
 
 **[humanizer](https://github.com/blader/humanizer), but for code.** An agent skill that removes signs of AI-generated code from a repository — the structural slop coding agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
 
