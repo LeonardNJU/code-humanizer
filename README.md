@@ -128,4 +128,8 @@ Pattern-catalog format inspired by [blader/humanizer](https://github.com/blader/
 
 ## Community
 
-Released and discussed on [linux.do](https://linux.do), where feedback and new-pattern reports from the Chinese open-source community land first. English-side discussion lives in [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues).
+All feedback and new-pattern reports go through [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues).
+
+Introduction threads: [linux.do](https://linux.do/t/topic/2590134/) · [NJU-AIA forum](https://forum.nju-aia.com/t/topic/265)
+
+友链:[linux.do](https://linux.do)

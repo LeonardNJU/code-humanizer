@@ -128,4 +128,8 @@ Pattern 目录的形式受 [blader/humanizer](https://github.com/blader/humanize
 
 ## 社区
 
-本项目在 [linux.do](https://linux.do) 发布与交流,新 pattern 反馈优先在那里汇集;英文侧讨论走 [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues)。
+所有反馈与新 pattern 报告统一走 [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues)。
+
+介绍帖:[linux.do](https://linux.do/t/topic/2590134/) · [NJU-AIA 论坛](https://forum.nju-aia.com/t/topic/265)
+
+友链:[linux.do](https://linux.do)
