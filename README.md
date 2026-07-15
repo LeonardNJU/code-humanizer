@@ -1,4 +1,6 @@
 # code-humanizer
+<img width="1280" height="640" alt="social-preview" src="https://github.com/user-attachments/assets/ae4cb1c9-dbc7-4828-a814-725f08a20001" />
+
 
 English | [中文](README.zh.md)
 
