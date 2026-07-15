@@ -2,6 +2,8 @@
 
 English | [中文](README.zh.md)
 
+[![GitHub stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=social)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **[humanizer](https://github.com/blader/humanizer), but for code.** An agent skill that removes signs of AI-generated code from a repository — the structural slop coding agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
 
 The prose humanizer catalogs AI *writing* tells (em-dashes, "it's not just X, it's Y", rule-of-three). This catalogs AI *coding* tells — 16 numbered patterns in 5 tiers, each with detection signals and before/after examples in [SKILL.md](SKILL.md):
@@ -107,16 +109,6 @@ Default mode is **scan → report** (findings table with pattern #, severity 0�
 ## Contributing patterns
 
 The catalog is 16 patterns today and will never be finished — agents keep inventing new kinds of slop. If you've hit one that isn't covered, [open an issue](https://github.com/LeonardNJU/code-humanizer/issues) with a minimal before/after example (or a PR — even better). New patterns enter the catalog the same way the original 16 did: a real failing example first, then the rule.
-
-## Star History
-
-<a href="https://star-history.com/#LeonardNJU/code-humanizer&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
- </picture>
-</a>
 
 ## Credits
 

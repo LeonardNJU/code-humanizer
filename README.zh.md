@@ -2,6 +2,8 @@
 
 [English](README.md) | 中文
 
+[![GitHub stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=social)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **[humanizer](https://github.com/blader/humanizer) 管文字,这个管代码。** 一个 agent skill,用来清除仓库里 AI 生成代码的痕迹——coding agent 为了"测试通过"而牺牲"代码库健康"时留下的结构性屎山。
 
 文字版 humanizer 整理的是 AI *写作*的破绽(em-dash、"不是X而是Y"、三段排比)。这里整理的是 AI *写代码*的破绽——16 条 pattern、5 个层级,每条在 [SKILL.md](SKILL.md) 里都有检测信号和 before/after 例子:
@@ -107,16 +109,6 @@ git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-hum
 ## 贡献新 pattern
 
 目录今天是 16 条,但永远不会"完工"——agent 总在发明新的屎感。如果你在 vibe-coding 里撞见了没被覆盖的模式,[提个 issue](https://github.com/LeonardNJU/code-humanizer/issues) 附上一段最小 before/after 例子(直接 PR 更好)。新 pattern 进目录的方式和最初 16 条一样:先有真实的失败例子,再立规则。
-
-## Star History
-
-<a href="https://star-history.com/#LeonardNJU/code-humanizer&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=LeonardNJU/code-humanizer&type=Date" />
- </picture>
-</a>
 
 ## 致谢
 
