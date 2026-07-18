@@ -8,6 +8,35 @@ English | [中文](README.zh.md)
 
 **[humanizer](https://github.com/blader/humanizer), but for code.** An agent skill that removes signs of AI-generated code from a repository — the structural slop coding agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
 
+## Install
+
+One command, picks your agents for you (Claude Code, Codex, Cursor, Cline, Gemini, Copilot, and more):
+
+```bash
+npx skills add LeonardNJU/code-humanizer
+```
+
+Or drop it in by hand — the skill is a single `SKILL.md`, no build step, no dependencies:
+
+```bash
+# Claude Code
+git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-humanizer
+```
+
+Any harness that reads `SKILL.md` agent skills works the same way.
+
+## Use
+
+```
+> use code-humanizer to scan this PR
+> deslop pkg/report.py — you have my approval to fix
+> this repo was vibe-coded, humanize it (report first)
+```
+
+Default mode is **scan → report** (findings table with pattern #, severity 0–4, evidence, proposed fix, behavior risk). Fix mode runs on your approval, one pattern per commit, tests green after every step.
+
+## What it catches
+
 The prose humanizer catalogs AI *writing* tells (em-dashes, "it's not just X, it's Y", rule-of-three). This catalogs AI *coding* tells — 16 numbered patterns in 5 tiers, each with detection signals and before/after examples in [SKILL.md](SKILL.md):
 
 ### The patterns
@@ -80,27 +109,6 @@ First field test: a private ML research repo, 13.4k LOC of Python (21-module pac
 4 findings were exempted as justified (severity 1): a preregistration guard, a deliberate sampling-strategy comparison, bounded retries with a final `raise`. 8 of 36 scripts and 6 of 21 modules came back fully clean — and were reported as clean.
 
 The take-away matched the skill's premise: agents working under review don't swallow errors — they **rewrite what already exists**. Repo-context duplication detection is the tier that matters.
-
-## Install
-
-Copy (or clone) this directory into your agent's skills folder:
-
-```bash
-# Claude Code
-git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-humanizer
-```
-
-Any harness that reads `SKILL.md` agent skills works the same way — the skill is a single Markdown file, no build step, no dependencies.
-
-## Use
-
-```
-> use code-humanizer to scan this PR
-> deslop pkg/report.py — you have my approval to fix
-> this repo was vibe-coded, humanize it (report first)
-```
-
-Default mode is **scan → report** (findings table with pattern #, severity 0–4, evidence, proposed fix, behavior risk). Fix mode runs on your approval, one pattern per commit, tests green after every step.
 
 ## Scope honesty
 

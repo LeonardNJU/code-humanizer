@@ -6,6 +6,35 @@
 
 **[humanizer](https://github.com/blader/humanizer) 管文字,这个管代码。** 一个 agent skill,用来清除仓库里 AI 生成代码的痕迹——coding agent 为了"测试通过"而牺牲"代码库健康"时留下的结构性屎山。
 
+## 安装
+
+一条命令,自动帮你选 agent(Claude Code、Codex、Cursor、Cline、Gemini、Copilot 等):
+
+```bash
+npx skills add LeonardNJU/code-humanizer
+```
+
+也可以手动放进去——整个 skill 就是一个 `SKILL.md`,没有构建步骤,没有依赖:
+
+```bash
+# Claude Code
+git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-humanizer
+```
+
+任何能读 `SKILL.md` agent skill 的框架都一样用。
+
+## 用法
+
+```
+> 用 code-humanizer 扫一下这个 PR
+> deslop pkg/report.py——我批准你直接修
+> 这个仓库是 vibe-coding 糊出来的,humanize 它(先只出报告)
+```
+
+默认模式是**扫描 → 报告**(findings 表:pattern 编号、严重度 0–4、证据、修法建议、行为风险)。修复模式需要你批准才会进入,一类 pattern 一个 commit,每步测试全绿。
+
+## 收录了哪些 pattern
+
 文字版 humanizer 整理的是 AI *写作*的破绽(em-dash、"不是X而是Y"、三段排比)。这里整理的是 AI *写代码*的破绽——16 条 pattern、5 个层级,每条在 [SKILL.md](SKILL.md) 里都有检测信号和 before/after 例子:
 
 ### Pattern 目录
@@ -78,27 +107,6 @@
 4 条发现被判为合理豁免(severity 1):预注册守卫、有意的采样策略对照、带最终 `raise` 的有界重试。36 个脚本里 8 个、21 个模块里 6 个完全干净——干净就报干净。
 
 结论正好印证了这个 skill 的前提:在人工 review 下工作的 agent 不吞异常——**它们只是不停地重写已经存在的东西**。仓库上下文的重复检测,才是真正要害的那一层。
-
-## 安装
-
-把这个目录复制(或 clone)到你的 agent skills 目录:
-
-```bash
-# Claude Code
-git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-humanizer
-```
-
-任何能读 `SKILL.md` agent skill 的框架都一样用——整个 skill 就是一个 Markdown 文件,没有构建步骤,没有依赖。
-
-## 用法
-
-```
-> 用 code-humanizer 扫一下这个 PR
-> deslop pkg/report.py——我批准你直接修
-> 这个仓库是 vibe-coding 糊出来的,humanize 它(先只出报告)
-```
-
-默认模式是**扫描 → 报告**(findings 表:pattern 编号、严重度 0–4、证据、修法建议、行为风险)。修复模式需要你批准才会进入,一类 pattern 一个 commit,每步测试全绿。
 
 ## 边界说明
 
