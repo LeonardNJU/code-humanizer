@@ -1,12 +1,12 @@
 # code-humanizer
-<img width="1280" height="640" alt="social-preview" src="https://github.com/user-attachments/assets/ae4cb1c9-dbc7-4828-a814-725f08a20001" />
+<img width="1280" height="640" alt="social-preview" src="assets/social-preview.png" />
 
 
 English | [中文](README.zh.md)
 
 [![Stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License](https://img.shields.io/github/license/LeonardNJU/code-humanizer?style=flat-square)](LICENSE) [![Last commit](https://img.shields.io/github/last-commit/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/commits) [![Issues](https://img.shields.io/github/issues/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/issues)
 
-**[humanizer](https://github.com/blader/humanizer), but for code.** An agent skill that removes signs of AI-generated code from a repository — the structural slop coding agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
+**[humanizer](https://github.com/blader/humanizer), but for code.** An agent skill that removes signs of AI-generated code from a repository, and can guard new changes against the same patterns — the structural slop coding agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
 
 ## Install
 
@@ -31,9 +31,17 @@ Any harness that reads `SKILL.md` agent skills works the same way.
 > use code-humanizer to scan this PR
 > deslop pkg/report.py — you have my approval to fix
 > this repo was vibe-coded, humanize it (report first)
+> implement this change with code-humanizer guard
+> keep experiments/ exploratory, but guard changes under src/
 ```
 
 Default mode is **scan → report** (findings table with pattern #, severity 0–4, evidence, proposed fix, behavior risk). Fix mode runs on your approval, one pattern per commit, tests green after every step.
+
+## Prevent slop while coding
+
+**Guard mode** applies the same catalog before and after an implementation: inspect the repository before creating helpers or abstractions, then audit only the resulting diff while checking duplication against the whole repo. It is a thin AI-slop-specific guardrail, not a general coding workflow and not permission to clean up unrelated code.
+
+Exploratory work may keep deliberate temporary duplication, hard-coded values, or parallel variants when they stay contained. Those exemptions end when the code moves into a core package, shared module, stable API, or merge-ready path.
 
 ## What it catches
 
@@ -143,5 +151,3 @@ Pattern-catalog format inspired by [blader/humanizer](https://github.com/blader/
 All feedback and new-pattern reports go through [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues).
 
 Introduction threads: [linux.do](https://linux.do/t/topic/2590134/) · [NJU-AIA forum](https://forum.nju-aia.com/t/topic/265)
-
-友链:[linux.do](https://linux.do)

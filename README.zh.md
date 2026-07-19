@@ -4,7 +4,7 @@
 
 [![Stars](https://img.shields.io/github/stars/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/stargazers) [![License](https://img.shields.io/github/license/LeonardNJU/code-humanizer?style=flat-square)](LICENSE) [![Last commit](https://img.shields.io/github/last-commit/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/commits) [![Issues](https://img.shields.io/github/issues/LeonardNJU/code-humanizer?style=flat-square)](https://github.com/LeonardNJU/code-humanizer/issues)
 
-**[humanizer](https://github.com/blader/humanizer) 管文字,这个管代码。** 一个 agent skill,用来清除仓库里 AI 生成代码的痕迹——coding agent 为了"测试通过"而牺牲"代码库健康"时留下的结构性屎山。
+**[humanizer](https://github.com/blader/humanizer) 管文字,这个管代码。** 一个 agent skill,用来清除仓库里 AI 生成代码的痕迹,也能用 Guard 模式预防当前改动产生同类问题——coding agent 为了"测试通过"而牺牲"代码库健康"时留下的结构性屎山。
 
 ## 安装
 
@@ -29,9 +29,17 @@ git clone https://github.com/LeonardNJU/code-humanizer ~/.claude/skills/code-hum
 > 用 code-humanizer 扫一下这个 PR
 > deslop pkg/report.py——我批准你直接修
 > 这个仓库是 vibe-coding 糊出来的,humanize 它(先只出报告)
+> 用 code-humanizer guard 实现这个改动
+> experiments/ 保持探索性,但 guard 住 src/ 下的改动
 ```
 
 默认模式是**扫描 → 报告**(findings 表:pattern 编号、严重度 0–4、证据、修法建议、行为风险)。修复模式需要你批准才会进入,一类 pattern 一个 commit,每步测试全绿。
+
+## 写代码时预防屎感
+
+**Guard 模式**在实现前后应用同一套 pattern:写代码前先检查仓库里已有的 helper、抽象和约定,完成后只审计本次 diff,但重复检测仍会搜索整个仓库。它是一层专门防 AI 代码屎感的轻量护栏,不是通用 coding workflow,也不授权 agent 顺手清理无关代码。
+
+探索性代码可以暂时保留有意的复制、hardcode 或平行变体,前提是范围受控。这些豁免在代码进入核心包、共享模块、稳定 API 或准备合并时结束。
 
 ## 收录了哪些 pattern
 
@@ -141,5 +149,3 @@ Pattern 目录的形式受 [blader/humanizer](https://github.com/blader/humanize
 所有反馈与新 pattern 报告统一走 [GitHub issues](https://github.com/LeonardNJU/code-humanizer/issues)。
 
 介绍帖:[linux.do](https://linux.do/t/topic/2590134/) · [NJU-AIA 论坛](https://forum.nju-aia.com/t/topic/265)
-
-友链:[linux.do](https://linux.do)

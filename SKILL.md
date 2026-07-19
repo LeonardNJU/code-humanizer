@@ -1,24 +1,26 @@
 ---
 name: code-humanizer
-version: 0.1.0
-description: Use when code was written by an AI coding agent and needs structural cleanup — duplicated reimplementations of existing helpers, try-import fallbacks, broad exception swallowing, speculative abstraction layers, _v2 copies, dead "for future use" code, narrating comments — or when asked to "deslop", "remove AI slop", "humanize code", clean up a vibe-coded repo, or review an AI-generated PR for code quality beyond tests passing.
+version: 0.2.0
+description: Use when AI-written code needs structural cleanup or when implementing a change under a guard against AI coding slop — duplicated reimplementations of existing helpers, try-import fallbacks, broad exception swallowing, speculative abstraction layers, _v2 copies, dead "for future use" code, narrating comments — including requests to "deslop", "remove AI slop", "humanize code", review an AI-generated PR beyond tests passing, or prevent these patterns in the current change.
 license: MIT
 compatibility: any-agent
 ---
 
 # Code Humanizer
 
-Remove signs of AI-generated code from a repository. The prose [humanizer](https://github.com/blader/humanizer) removes AI *writing* patterns; this removes AI *coding* patterns — the structural debt agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
+Remove signs of AI-generated code from a repository, or prevent the same patterns in the current change with Guard mode. The prose [humanizer](https://github.com/blader/humanizer) removes AI *writing* patterns; this handles AI *coding* patterns — the structural debt agents leave behind when they optimize for "tests pass" instead of "codebase stays healthy."
 
 **Core principle:** AI code slop is not ugly code — it is code that *works* but degrades the repository: it reimplements what already exists, adds abstraction nobody asked for, swallows errors it should surface, and hedges against situations that cannot occur. Unlike prose, code has an oracle: **the test suite decides what "meaning-preserving" means. Use it constantly.**
 
-## Iron rules (before touching anything)
+## Iron rules
+
+Rules 1–4 govern **cleanup of pre-existing code** in Modes A/B. In Guard mode they apply to any cleanup performed after implementation, not to the requested feature work itself. Rule 5 applies in every mode.
 
 1. **Behavior preservation is absolute.** "Cleanup" that changes behavior is a bug with good intentions. This includes *error types and error timing* — swapping an accidental `AttributeError` for a "nicer" `ValueError` changes behavior for every caller that catches it. If you find a latent bug or an ugly-but-load-bearing behavior: **flag it in the report; never fix it silently as part of cleanup.**
-2. **No tests → no edits.** Run the test suite first. If it doesn't exist, doesn't pass, or doesn't cover the code you'd change, you may only **report** (Mode A). Offer to write characterization tests first.
-3. **Report before rewrite.** Default to Mode A (scan → report). Only enter Mode B (fix) when the maintainer approves, or was explicit that they want fixes.
-4. **One pattern-class per commit.** Each commit removes one kind of slop and passes the full suite. A red test reverts the commit — do not "fix forward" into unrelated code.
-5. **Search before you judge duplication.** Build a mental index of the repo's existing helpers *before* scanning (grep `utils`, `helpers`, `common`, validators, existing base classes). You cannot recognize a reimplementation if you don't know what exists.
+2. **No tests → no cleanup edits.** Run the test suite first. If it doesn't exist, doesn't pass, or doesn't cover the pre-existing code you'd clean, you may only **report** that debt (Mode A). Offer to write characterization tests first. This does not forbid implementing a requested change in a project whose tests are incomplete; report the verification gap.
+3. **Report before rewriting pre-existing code.** Default to Mode A (scan → report). Only enter Mode B (fix) when the maintainer approves, or was explicit that they want fixes. Guard mode may directly avoid or remove slop introduced by the current change.
+4. **One pattern-class per cleanup commit.** Each commit that removes pre-existing slop handles one kind and passes the full suite. A red test reverts the commit — do not "fix forward" into unrelated code. Ordinary feature commits under Guard mode need not be split by pattern when the prevention is inseparable from the implementation.
+5. **Search before you judge duplication.** Build a mental index of the repo's existing helpers *before* scanning or implementing (grep `utils`, `helpers`, `common`, validators, existing base classes). You cannot recognize a reimplementation if you don't know what exists.
 
 ## Pattern catalog
 
@@ -132,7 +134,33 @@ When in doubt: report at severity 1–2, don't fix. **Look for clusters** — on
 7. **Audit pass:** re-scan the result and ask *"what would still make a reviewer say an AI wrote this?"* Fix or report the remainder.
 8. **Summary:** per-pattern counts removed, LOC delta, exemptions honored, behavior-risk items awaiting the maintainer.
 
-**Scoping:** for a PR/diff, scan only changed files but check duplication against the *whole* repo. For a whole repo, go module by module; propose the order and let the maintainer prune.
+**Mode C — Guard (while implementing):**
+
+Enter Guard mode when the user asks to prevent AI coding slop while implementing a change. It is a thin prevention layer, not a general coding methodology. It applies the same catalog to the implementation decisions and resulting diff of the current task. Do not turn it into a repository-wide cleanup unless the user asks.
+
+**Before coding — work from the repository inward:**
+1. Search existing helpers, utilities, sibling implementations, base classes, validators, and installed dependencies before creating a new one.
+2. Trace the real types, invariants, and error behavior on the path being changed. Do not compensate for unknowns with probing chains or broad fallbacks.
+3. Identify the scope: exploratory code, an internal module, or a stable/public boundary. Look for documented migrations, compatibility requirements, and actual plugin loading before judging their shapes.
+
+**While coding — use five decision rules:**
+- **Reuse before recreating** (patterns 1–3): extend or call what the repository already owns; do not fork helpers or standard-library behavior.
+- **Concrete before abstract** (patterns 4–7): keep a local need local; wait for a real second implementation before adding an abstraction, registry, global knob, or public API.
+- **Know before defending** (patterns 8–11): write against the actual contract; defensive flexibility belongs at real trust boundaries, not wherever the type was left unexamined.
+- **Explain why, not what** (patterns 12–14): comments record constraints and non-obvious reasons; remove narration, boilerplate, and implementation debris.
+- **Test behavior, not scaffolding** (patterns 15–16): assert externally meaningful behavior and failure cases, not merely that mocks were called.
+
+**After coding — audit the diff, index the repo:**
+1. Run the relevant tests and inspect only the current diff against the catalog. Duplication checks still search the whole repository.
+2. Fix safe slop introduced by the current change. Do not opportunistically refactor unrelated pre-existing findings; report them separately.
+3. Record justified exemptions briefly. Expand into a full findings table only when meaningful debt or behavior risk remains.
+4. End with a compact guard audit, for example: reused existing helper; no new speculative API; one exploratory exemption; tests passed.
+
+### Exploration is not production debt
+
+Exploration may justify temporary duplication, hard-coded values, parallel variants, or rough scripts, especially under `experiments/`, `scratch/`, `notebooks/`, and `prototypes/`. Treat these as severity 1 when they are contained and deliberate. The exemption ends when the code moves into a core package, stable API, shared module, or merge-ready path. Guard mode should preserve room to discover; hardening is where temporary branches converge and the normal catalog applies.
+
+**Scoping:** for a PR/diff, scan only changed files but check duplication against the *whole* repo. For a whole repo, go module by module; propose the order and let the maintainer prune. In Guard mode, constrain edits and the post-pass to the current task's diff unless broader cleanup was requested.
 
 ## Common mistakes (seen in the wild)
 
